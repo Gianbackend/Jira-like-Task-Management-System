@@ -9,8 +9,8 @@
 
 ```
   url: jdbc:postgresql://localhost:5432/jira
-  username: jira
-  password: CodeGymJira
+  username: your_db_user
+  password: your_db_password
 ```
 
 - There are two tables, which do not have foreign keys
