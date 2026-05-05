@@ -1,0 +1,21 @@
+.idea
+out
+target
+*.iml
+logs
+attachments
+*.patch
+#ESO YA LO TENIA, AHORA VIENE O TUYO
+
+# env
+.env
+*.env
+application-local.yml
+
+# postgres data (MUY IMPORTANTE)
+pgdata/
+pgdata-test/
+
+# logs / build
+target/
+*.log
