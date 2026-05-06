@@ -1,29 +1,40 @@
-## [REST API](http://localhost:8080/doc)
+# Jira-like Task Management System
 
-## Concept:
+Sistema de gestión de tareas inspirado en Jira, desarrollado con Spring Boot.  
+El proyecto implementa una arquitectura modular y utiliza PostgreSQL como base de datos principal.
 
-- Spring Modulith
-    - [Introduction to Spring Modulith](https://www.baeldung.com/spring-modulith)
-    - [Introducing Spring Modulith](https://spring.io/blog/2022/10/21/introducing-spring-modulith)
-    - [Spring Modulith - Reference documentation](https://docs.spring.io/spring-modulith/docs/current-SNAPSHOT/reference/html/)
+## API REST
 
-```
-url: ${DB_URL:jdbc:postgresql://localhost:5432/jira}
-  username: ${DB_USERNAME:your_db_user}
-  password: ${DB_PASSWORD}
-```
+La documentación de la API está disponible localmente en:
 
-- There are two tables, which do not have foreign keys
-    - _Reference_ - directory. Make the link using _code_ (using id is not allowed, as id is tied to the environment-specific base)
-    - _UserBelong_ - link users with type (owner, lead, ...) to object (task, project, sprint, ...). FK will be checked manually
+[http://localhost:8080/doc](http://localhost:8080/doc)
 
-## Analogues
+---
 
-- https://java-source.net/open-source/issue-trackers
+## Conceptos principales
 
-## Testing
+Este proyecto utiliza **Spring Modulith** para organizar la aplicación en módulos lógicos, manteniendo una estructura clara y escalable.
 
-- https://www.youtube.com/watch?v=aEW8ZH6wj2o
+Referencias útiles:
 
-List of completed tasks:
-...
+- [Introduction to Spring Modulith](https://www.baeldung.com/spring-modulith)
+- [Introducing Spring Modulith](https://spring.io/blog/2022/10/21/introducing-spring-modulith)
+- [Spring Modulith - Reference documentation](https://docs.spring.io/spring-modulith/docs/current-SNAPSHOT/reference/html/)
+
+---
+
+## Configuración mediante variables de entorno
+
+Las credenciales sensibles no se almacenan directamente en los archivos de configuración.  
+La conexión a la base de datos y otros servicios externos se gestionan mediante variables de entorno.
+
+### Configuración de base de datos
+
+Ejemplo de configuración:
+
+```yaml
+spring:
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/jira}
+    username: ${DB_USERNAME:your_db_user}
+    password: ${DB_PASSWORD}
