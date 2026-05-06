@@ -1,26 +1,70 @@
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/jira
-    username: ${DB_USER}
+    url: ${DB_URL:jdbc:postgresql://127.0.0.1:5434/jira}
+    username: ${DB_USERNAME:jira}
     password: ${DB_PASSWORD}
+
+  liquibase:
+    change-log: classpath:/db/changelog.sql
+
+  jpa:
+    open-in-view: false
+    properties:
+      jakarta:
+        persistence:
+          sharedCache:
+            mode: ENABLE_SELECTIVE
+
+  thymeleaf:
+    check-template-location: false
+
+  mail:
+    host: ${MAIL_HOST:localhost}
+    port: ${MAIL_PORT:1025}
+    username: ${MAIL_USERNAME:noreply@codegym.local}
+    password: ${MAIL_PASSWORD:}
+    properties:
+      mail:
+        smtp:
+          auth: false
+          starttls:
+            enable: false
 
   security:
     oauth2:
       client:
         registration:
           google:
-            client-id: ${GOOGLE_CLIENT_ID}
-            client-secret: ${GOOGLE_CLIENT_SECRET}
-          github:
-            client-id: ${GITHUB_CLIENT_ID}
-            client-secret: ${GITHUB_CLIENT_SECRET}
-          facebook:
-            client-id: ${FACEBOOK_CLIENT_ID}
-            client-secret: ${FACEBOOK_CLIENT_SECRET}
-          gitlab:
-            client-id: ${GITLAB_CLIENT_ID}
-            client-secret: ${GITLAB_CLIENT_SECRET}
+            client-id: ${GOOGLE_CLIENT_ID:dummy-google-client-id}
+            client-secret: ${GOOGLE_CLIENT_SECRET:dummy-google-client-secret}
 
-  mail:
-    username: ${MAIL_USERNAME}
-    password: ${MAIL_PASSWORD}
+          github:
+            client-id: ${GITHUB_CLIENT_ID:dummy-github-client-id}
+            client-secret: ${GITHUB_CLIENT_SECRET:dummy-github-client-secret}
+
+
+          gitlab:
+            provider: gitlab
+            client-id: ${GITLAB_CLIENT_ID:dummy-gitlab-client-id}
+            client-secret: ${GITLAB_CLIENT_SECRET:dummy-gitlab-client-secret}
+            authorization-grant-type: authorization_code
+            redirect-uri: "{baseUrl}/login/oauth2/code/{registrationId}"
+            scope:
+              - read_user
+
+        provider:
+          gitlab:
+            authorization-uri: https://gitlab.com/oauth/authorize
+            token-uri: https://gitlab.com/oauth/token
+            user-info-uri: https://gitlab.com/api/v4/user
+            user-name-attribute: username
+
+app:
+  host-url: http://localhost:8080
+  test-mail: test@gmail.com
+  templates-update-cache: 5s
+
+  mail-sending-props:
+    core-pool-size: 2
+    max-pool-size: 5
+    queue-capacity: 100

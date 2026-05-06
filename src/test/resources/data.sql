@@ -105,8 +105,8 @@ values (1, 'skype', 'userSkype'),
        (1, 'mobile', '+01234567890'),
        (1, 'website', 'user.com'),
        (2, 'github', 'adminGitHub'),
-       (2, 'telegram', 'adminTg'),
-       (2, 'facebook', 'adminFb');
+       (2, 'telegram', 'adminTg');
+
 
 
 insert into PROJECT (code, title, description, type_code, parent_id, startpoint)

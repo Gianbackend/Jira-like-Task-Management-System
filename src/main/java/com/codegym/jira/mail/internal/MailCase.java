@@ -3,6 +3,7 @@ package com.codegym.jira.mail.internal;
 import com.codegym.jira.common.model.BaseEntity;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.PrePersist;
 import jakarta.persistence.Table;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
@@ -51,6 +52,13 @@ public class MailCase extends BaseEntity {
         this.name = name;
         this.template = template;
         this.result = result;
+    }
+
+    @PrePersist
+    public void prePersist() {
+        if (dateTime == null) {
+            dateTime = LocalDateTime.now();
+        }
     }
 
     @Override

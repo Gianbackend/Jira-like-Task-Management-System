@@ -26,7 +26,7 @@ or
 	-p 5432:5432 \
 	--name postgres-db \
 	-e POSTGRES_USER=jira \
-	-e POSTGRES_PASSWORD=CodeGymJira \
+	-e POSTGRES_PASSWORD=$POSTGRES_PASSWORD\
 	-e POSTGRES_DB=jira \
 	-e PGDATA=/var/lib/postgresql/data/pgdata \
 	-v ./pgdata:/var/lib/postgresql/data \
@@ -38,7 +38,7 @@ or
   ```
   -p 5432:5432 - port, on which the database will launch
   --name postgres-db - name of the docker container
-  -e POSTGRES_PASSWORD=CodeGymJira - database password
+  -e POSTGRES_PASSWORD=$POSTGRES_PASSWORD - database password from environment variable
   -e POSTGRES_USER=jira - database user's username
   -e POSTGRES_DB=jira - name of the database
   -e PGDATA=/var/lib/postgresql/data/pgdata - folder where data will be stored
@@ -52,7 +52,7 @@ or
   1. host - server ip-address
   2. port - 5432
   3. username - jira
-  4. password - CodeGymJira
+  4. password - value from POSTGRES_PASSWORD environment variable
   5. table - jira
   ```
 

@@ -8,9 +8,9 @@
     - [Spring Modulith - Reference documentation](https://docs.spring.io/spring-modulith/docs/current-SNAPSHOT/reference/html/)
 
 ```
-  url: jdbc:postgresql://localhost:5432/jira
-  username: your_db_user
-  password: your_db_password
+url: ${DB_URL:jdbc:postgresql://localhost:5432/jira}
+  username: ${DB_USERNAME:your_db_user}
+  password: ${DB_PASSWORD}
 ```
 
 - There are two tables, which do not have foreign keys

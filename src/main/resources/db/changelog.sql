@@ -1,5 +1,6 @@
 --liquibase formatted sql
 
+--changeset codegym:init runOnChange:true splitStatements:true endDelimiter:;
 DROP TABLE IF EXISTS USER_ROLE;
 DROP TABLE IF EXISTS CONTACT;
 DROP TABLE IF EXISTS MAIL_CASE;
