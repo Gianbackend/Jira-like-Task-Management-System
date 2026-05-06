@@ -1,7 +1,7 @@
 # template for server
 app:
   host-url: http://localhost
-spring:
+spring:gi
   datasource:
     url: ${DB_URL}
     username: ${DB_USERNAME}
