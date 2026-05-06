@@ -39,24 +39,30 @@ spring:
     username: ${DB_USERNAME:your_db_user}
     password: ${DB_PASSWORD}
 Variables requeridas para ejecución local
-$env:DB_URL="jdbc:postgresql://localhost:5432/jira"
-$env:DB_USERNAME="jira"
-$env:DB_PASSWORD="tu_password"
+
+    $env:DB_URL="jdbc:postgresql://localhost:5432/jira"
+    $env:DB_USERNAME="jira"
+    $env:DB_PASSWORD="tu_password"
+    
 Luego, ejecutar la aplicación:
-mvn spring-boot:run
+    mvn spring-boot:run
 
 Configuración para tests
 Para ejecutar las pruebas automatizadas, se pueden definir variables específicas para el entorno de test:
-$env:TEST_DB_URL="jdbc:postgresql://localhost:5433/jira-test"
-$env:TEST_DB_USERNAME="jira"
-$env:TEST_DB_PASSWORD="tu_password_test"
+
+    $env:TEST_DB_URL="jdbc:postgresql://localhost:5433/jira-test"
+    $env:TEST_DB_USERNAME="jira"
+    $env:TEST_DB_PASSWORD="tu_password_test"
+
 Ejecutar tests:
-mvn test
+    mvn test
+
 Resultado validado:
-Tests run: 142, Failures: 0, Errors: 0, Skipped: 0
-BUILD SUCCESS
+    Tests run: 142, Failures: 0, Errors: 0, Skipped: 0
+    BUILD SUCCESS
 
 Modelo de datos
+
 Existen dos tablas principales que no utilizan claves foráneas físicas:
 
 Reference: tabla de referencia o directorio.
