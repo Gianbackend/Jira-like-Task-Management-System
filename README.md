@@ -60,27 +60,3 @@ Ejecutar tests:
 Resultado validado:
     Tests run: 142, Failures: 0, Errors: 0, Skipped: 0
     BUILD SUCCESS
-
-Modelo de datos
-
-Existen dos tablas principales que no utilizan claves foráneas físicas:
-
-Reference: tabla de referencia o directorio.
-
-Las relaciones deben realizarse mediante el campo code, ya que no está permitido usar id debido a que puede variar entre entornos.
-
-UserBelong: tabla utilizada para vincular usuarios con un tipo de relación, por ejemplo owner, lead, entre otros, hacia objetos como tareas, proyectos o sprints.
-
-La validación de estas relaciones se realiza manualmente desde la lógica de la aplicación.
-
-Referencias y proyectos similares
-Open Source Issue Trackers
-Recursos de testing
-Testing tutorial
-Tareas completadas
-Eliminación de la integración con Facebook OAuth.
-Externalización de credenciales sensibles mediante variables de entorno.
-Actualización de configuración local, test y producción.
-Eliminación de credenciales hardcodeadas en archivos de configuración y documentación.
-Validación del proyecto mediante ejecución exitosa de tests.
-Resultado final de pruebas: 142 tests passed.
